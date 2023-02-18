@@ -23,7 +23,43 @@ int main() {
 	int numDigits = 0;
 	int numChars = 0;
 	int numWords = 0;
+	bool inWord = false;
+	std::string userString;
 
+	std::getline(std::cin, userString);
+
+	for (size_t i = 0; i < userString.length(); i++) {
+
+		if (isalpha(userString[i]) != 0) {
+			
+			numLetters++;
+			switch (tolower(userString[i])) {
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'o':
+			case 'u':
+				numVowels++;
+				break;
+			default:
+				numConsonants++;
+			}
+		}
+		if (isdigit(userString[i]) != 0) {
+			numDigits++;
+		}
+		if (isspace(userString[i]) == 0) {
+			if (!inWord) {
+				inWord = true;
+				numWords++;
+			}
+			numChars++;
+		}
+		else {
+			inWord = false;
+		}
+
+	}
 
 
 
